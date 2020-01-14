@@ -3,7 +3,7 @@
 ## High Efficiency Reactive Architecture, for Flutter  
 Scott Stoll designed, Simon Lightfoot approved.
 
-## Getting Started
+## The Story So Far...
 
 One day in the Worldwide Flutter Freelancer's Remote Office _(A.K.A. Scott's Zoom)_, Scott and Simon were having a conversation about ValueNotifier. At one point, Scott turned to Simon and asked: 
 
