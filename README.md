@@ -20,7 +20,7 @@ The way it works is actually very simple:
 - ONLY the widgets affected by changing that variable will be rebuild, NO OTHERS.
 - After the UI has updated for all changes, it sits and waits for the next event.  
   
- ####Benefits:  
+ ## Benefits:  
  * One way, circular flow of data and events. This is an important principle borrowed from Redux. The flow is:  
  
      > 1. UI 
@@ -35,7 +35,7 @@ Here are the steps in more detail:
 3. A variable being changed triggers its ValueNotifier. Here, a ValueNotifier does the job of a "Model".
 4. Each ValueNotifier has one or more ValueListenableBuilders. Every time their ValueNotifier sends the signal, these will *automatically* rebuild whatever child you gave them, using the new variable values.  
   
-####Compared to Redux
+## Compared to Redux
 - Redux passes the entire app state around. HERA only passes the variable you care about.
 -  Boilerplate. The entire self-contained HERA example app is only 98 lines, including
         main( ), imports and whitespace.
@@ -44,7 +44,7 @@ Here are the steps in more detail:
 
 
 
-  ####Compared to ChangeNotifier
+  ## Compared to ChangeNotifier
    - ChangeNotifier passes the entire object that extended ChangeNotifier.
    - ChangeNotifier could cause unnecessary rebuilds if you aren't careful and don't use a Selector.
    - HERA passes ONLY the individual variable or object that changed.
@@ -53,7 +53,7 @@ Here are the steps in more detail:
 
    *  Instead of passing the entire app state or an entire object, HERA was designed on the principle that if your Widget only uses one thing, then maybe you should only be passing it that one thing and nothing else.
 
-####Compared to BLoC
+## Compared to BLoC
    - With HERA, the app-wide logic should still be placed in its own folder and files.
    - Logic that applies only to a specific HeraModel object should be located in that HeraModel.
    - NO STREAMS
