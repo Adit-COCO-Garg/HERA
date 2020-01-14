@@ -11,10 +11,13 @@ _"If Redux is passing around the entire app state that's full of stuff we don't 
 
 After Simon silently shrugged in his secret code that means: _"I have no idea"_, Scott became stubbornly determined to use ValueNotifier in a way that passes only the data he's using, and nothing else. After he spent three days finishing the original design (and Simon spent two hours tearing it to pieces and refactoring it) H.E.R.A. was born.
 
+The principle behind H.E.R.A. is this:
+> HERA was designed around the idea that if your Widget only uses one thing, then maybe you should only be passing it that one thing and nothing else.
+
 The way it works is actually quite simple:
  
-- The UI sends events to the logic in the HeraModel.
-- Each member variable we care about in the UI is wrapped in a ValueNotifier inside its HeraModel.
+- The UI sends events to the logic in the HeraObject.
+- Each member variable we care about in the UI is wrapped in a ValueNotifier inside its HeraObject.
 - The ValueNotifiers are doing the job of a "Model", in other architectures.
 - When a value we care about changes, its ValueNotifier notifies its listeners in the UI.
 - After the UI has updated for all changes, it sits and waits for the next event.  
@@ -29,8 +32,8 @@ The way it works is actually quite simple:
     > 5. Back to UI 
 
 Here are the steps in more detail:
-1. UI events call functions in the "HeraModel" logic section. (The HeraModel is your object.)
-2. Those functions (logic)  change values of member variables in the HeraModel.
+1. UI events call functions in the "HeraObject" logic section. (The HeraObject is just your object.)
+2. Those functions (logic)  change values of member variables in the HeraObject.
 3. A variable being changed triggers its ValueNotifier. Here, a ValueNotifier does the job of a "Model".
 4. Each ValueNotifier has one or more ValueListenableBuilders. Every time their ValueNotifier sends the signal, these will *automatically* rebuild whatever child you gave them, using the new variable values.  
   
@@ -41,20 +44,17 @@ Here are the steps in more detail:
 - Much more...  
 
 
-
-
 ## Compared to ChangeNotifier
- - ChangeNotifier passes the entire object that extended ChangeNotifier.
- - ChangeNotifier could cause unnecessary rebuilds if you aren't careful and don't use a Selector.
- - HERA passes ONLY the individual variable or object that changed.
-        You *can't* get an update for something you don't care about, it's just not possible.
-        Therefore, it's impossible to trigger unnecessary rebuilds. You don't need to plan carefully and there's no more need for Selectors.
+   - ChangeNotifier passes the entire object that extended ChangeNotifier.
+   - ChangeNotifier could cause unnecessary rebuilds if you aren't careful and don't use a Selector.
+   -  HERA passes ONLY the individual variable or object that changed.
+             You *can't* get an update for something you don't care about, it's just not possible.
+             Therefore, it's impossible to trigger unnecessary rebuilds. You don't need to plan carefully and there's no more need for Selectors.
 
- -  Instead of passing the entire app state or an entire object, HERA was designed on the principle that if your Widget only uses one thing, then maybe you should only be passing it that one thing and nothing else.
 
 ## Compared to BLoC
    - With HERA, the app-wide logic should still be placed in its own folder and files.
-   - Logic that applies only to a specific HeraModel object should be located in that HeraModel.
+   - Logic that applies only to a specific HeraObject should be located in that HeraObject.
    - NO STREAMS
         - No need to worry about subscriptions.
         - No need to worry about single-use vs. broadcast streams.
