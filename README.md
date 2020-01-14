@@ -12,7 +12,7 @@ _"If Redux is passing around the entire app state that's full of stuff we don't 
 After Simon silently shrugged in his secret code that means: _"I have no idea"_, Scott became stubbornly determined to use ValueNotifier in a way that passes only the data he's using, and nothing else. After he spent three days finishing the original design (and Simon spent two hours tearing it to pieces and refactoring it) H.E.R.A. was born.
 
 The principle behind H.E.R.A. is this:
-> HERA was designed around the idea that if your Widget only uses one thing, then maybe you should only be passing it that one thing and nothing else.
+> If your Widget only uses one thing, then maybe you should only be passing it that one thing.
 
 The way it works is actually quite simple:
  
