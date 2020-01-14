@@ -1,6 +1,6 @@
 # H.E.R.A.
 
-####High Efficiency Reactive Architecture, for Flutter  
+#### High Efficiency Reactive Architecture, for Flutter  
 Scott Stoll designed, Simon Lightfoot approved.
 
 ## Getting Started
