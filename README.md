@@ -11,13 +11,12 @@ _"If Redux is passing around the entire app state that's full of stuff we don't 
 
 After Simon silently shrugged in his secret code that means: _"I have no idea"_, Scott became stubbornly determined to use ValueNotifier in a way that passes only the data he's using, and nothing else. After he spent three days finishing the original design (and Simon spent two hours tearing it to pieces and refactoring it) H.E.R.A. was born.
 
-The way it works is actually very simple:
+The way it works is actually quite simple:
  
 - The UI sends events to the logic in the HeraModel.
-- Each member variable we care about in the UI is wrapped in a ValueNotifier.
-- The ValueNotifiers are doing the job of a "Model".
+- Each member variable we care about in the UI is wrapped in a ValueNotifier inside its HeraModel.
+- The ValueNotifiers are doing the job of a "Model", in other architectures.
 - When a value we care about changes, its ValueNotifier notifies its listeners in the UI.
-- ONLY the widgets affected by changing that variable will be rebuild, NO OTHERS.
 - After the UI has updated for all changes, it sits and waits for the next event.  
   
  ## Benefits:  
