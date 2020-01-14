@@ -9,7 +9,7 @@ One day in the Worldwide Flutter Freelancer's Remote Office _(A.K.A. Scott's Zoo
 
 _"If Redux is passing around the entire app state that's full of stuff we don't need, ChangeNotifier is passing around entire objects when we only need one variable, and ValueNotifier  only passes the variable we care about and nothing else... then tell me again WHY we aren't all using ValueNotifier and throwing everything else out the window??"_
 
-After Simon shrugged in his secret code that means: _"I have no idea"_, Scott became stubbornly determined to use ValueNotifier in a way that passes only the data he's using, and nothing else. After Scott finished with the original design (and Simon finished tearing it completely apart and refactoring it) H.E.R.A. was born.
+After Simon shrugged in his secret code that means: _"I have no idea"_, Scott became stubbornly determined to use ValueNotifier in a way that passes only the data he's using, and nothing else. After he spent three days finishing the original design (and Simon spent two hours tearing it to pieces and refactoring it) H.E.R.A. was born.
 
 The way it works is actually very simple:
  
@@ -44,14 +44,14 @@ Here are the steps in more detail:
 
 
 
-  ## Compared to ChangeNotifier
-   - ChangeNotifier passes the entire object that extended ChangeNotifier.
-   - ChangeNotifier could cause unnecessary rebuilds if you aren't careful and don't use a Selector.
-   - HERA passes ONLY the individual variable or object that changed.
-          You *can't* get an update for something you don't care about, it's just not possible.
-          Therefore, it's impossible to trigger unnecessary rebuilds. You don't need to plan carefully and there's no more need for Selectors.
+## Compared to ChangeNotifier
+ - ChangeNotifier passes the entire object that extended ChangeNotifier.
+ - ChangeNotifier could cause unnecessary rebuilds if you aren't careful and don't use a Selector.
+ - HERA passes ONLY the individual variable or object that changed.
+        You *can't* get an update for something you don't care about, it's just not possible.
+        Therefore, it's impossible to trigger unnecessary rebuilds. You don't need to plan carefully and there's no more need for Selectors.
 
-   *  Instead of passing the entire app state or an entire object, HERA was designed on the principle that if your Widget only uses one thing, then maybe you should only be passing it that one thing and nothing else.
+ -  Instead of passing the entire app state or an entire object, HERA was designed on the principle that if your Widget only uses one thing, then maybe you should only be passing it that one thing and nothing else.
 
 ## Compared to BLoC
    - With HERA, the app-wide logic should still be placed in its own folder and files.
