@@ -7,7 +7,7 @@ Scott Stoll designed, Simon Lightfoot approved.
 
 One day in the Worldwide Flutter Freelancer's Remote Office _(A.K.A. Scott's Zoom)_, Scott and Simon were having a conversation about ValueNotifier. At one point, Scott turned to Simon and asked: 
 
-_"If Redux is passing around the entire app state that's full of stuff we don't need, ChangeNotifier is passing around entire objects when we only need one variable, and ValueNotifier  only passes the variable we care about and nothing else... then tell me again WHY we don't just use ValueNotifier and throw everything else out the window??"_
+_"If Redux is passing around the entire app state that's full of stuff we don't need, ChangeNotifier is passing around entire objects when we only need one variable, and ValueNotifier  only passes the variable we care about and nothing else... then tell me again WHY we aren't just using ValueNotifier and throwing everything else out the window??"_
 
 After Simon silently shrugged in his secret code that means: _"I have no idea"_, Scott became stubbornly determined to use ValueNotifier in a way that passes only the data he's using, and nothing else. After he spent three days finishing the original design (and Simon spent two hours tearing it to pieces and refactoring it) H.E.R.A. was born.
 
